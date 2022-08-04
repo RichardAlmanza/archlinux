@@ -1,2 +1,2 @@
 # archlinux
-A repository to sava my manage process for archlinux
+A repository to save my management process for archlinux
