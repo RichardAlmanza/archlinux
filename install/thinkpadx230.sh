@@ -14,6 +14,8 @@ ip addr show enp0s25
 
 # ==== Use SSH remote connection ====
 ssh root@192.168.1.9
+# to check battery percetage
+cat /sys/class/power_supply/BAT0/capacity
 pacman -Sy upower
 # to check the detailed battery state use the command below
 upower -i /org/freedesktop/UPower/devices/battery_BAT0
