@@ -56,3 +56,8 @@ pacman -Sy archlinux-keyring
 pacstrap /mnt base base-devel linux linux-firmware \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
 neovim
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+
