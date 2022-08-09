@@ -41,3 +41,18 @@ cgdisk /dev/sda
 mkfs.fat -F 32 /dev/sda1
 mkswap /dev/sda2
 mkfs.ext4 /dev/sda3
+
+mount /dev/sda3 /mnt
+mount --mkdir /dev/sda1 /mnt/boot
+swapon /dev/sda2
+
+# backup mirrorlist 
+cp /etc/pacman.d/mirrorlist .
+# Create a new mirrorlist
+reflector --latest 20 --protocol https --country 'United States,Colombia,' --save /etc/pacman.d/mirrorlist --ipv4 --ipv6 --sort rate --verbose
+
+# Install Arch base
+pacman -Sy archlinux-keyring
+pacstrap /mnt base base-devel linux linux-firmware \
+gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
+neovim
