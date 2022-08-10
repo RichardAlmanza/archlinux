@@ -64,3 +64,9 @@ arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/America/Bogota /etc/localtime
 hwclock --systohc
 timedatectl set-ntp true
+
+# uncomment the locales needed ( en_US.UTF-8  es_CO.UTF-8 )
+nvim /etc/locale.gen
+locale-gen
+echo -e "# Custom settings\nLANG=en_US.UTF-8" > /etc/locale.conf
+echo "KEYMAP=es" > /etc/vconsole.conf
