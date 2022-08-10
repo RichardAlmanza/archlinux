@@ -55,12 +55,13 @@ reflector --latest 20 --protocol https --country 'United States,Colombia,' --sav
 pacman -Sy archlinux-keyring
 pacstrap /mnt base base-devel linux linux-firmware \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
-neovim
+neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
+zsh code sudo
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
-chsh -s /bin/zsh
+
 ln -sf /usr/share/zoneinfo/America/Bogota /etc/localtime
 hwclock --systohc
 timedatectl set-ntp true
