@@ -74,3 +74,5 @@ echo "KEYMAP=es" > /etc/vconsole.conf
 echo "arch-wolf" > /etc/hostname
 
 mkinitcpio -P
+# Set Root password
+passwd
