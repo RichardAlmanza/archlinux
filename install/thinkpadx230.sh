@@ -55,8 +55,7 @@ reflector --latest 20 --protocol https --country 'United States,Colombia,' --sav
 pacman -Sy archlinux-keyring
 pacstrap /mnt base base-devel linux linux-firmware \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
-neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
-zsh code sudo
+neovim
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -71,3 +70,5 @@ nvim /etc/locale.gen
 locale-gen
 echo -e "# Custom settings\nLANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=es" > /etc/vconsole.conf
+
+echo "arch-wolf" > /etc/hostname
