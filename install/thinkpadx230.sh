@@ -60,7 +60,7 @@ neovim
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
-
+chsh -s /bin/zsh
 ln -sf /usr/share/zoneinfo/America/Bogota /etc/localtime
 hwclock --systohc
 timedatectl set-ntp true
