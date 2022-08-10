@@ -99,3 +99,4 @@ nvim /boot/loader/entries/arch.conf
 # initrd  /initramfs-linux.img
 # options root="LABEL=arch_os" rw
 
+systemctl enable NetworkManager.service
