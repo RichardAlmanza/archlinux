@@ -72,3 +72,5 @@ echo -e "# Custom settings\nLANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=es" > /etc/vconsole.conf
 
 echo "arch-wolf" > /etc/hostname
+
+mkinitcpio -P
