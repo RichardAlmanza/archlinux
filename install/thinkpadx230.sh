@@ -102,3 +102,11 @@ nvim /boot/loader/entries/arch.conf
 systemctl enable NetworkManager.service
 systemctl enable gdm.service
 systemctl enable fstrim.timer
+sensors-detect
+
+# add users
+useradd -m -s /bin/zsh anaeru
+passwd anaeru
+chfn -f "Richard Almanza" anaeru
+echo "anaeru ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudo-users.conf
+
