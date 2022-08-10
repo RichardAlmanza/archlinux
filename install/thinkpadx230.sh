@@ -110,3 +110,7 @@ passwd anaeru
 chfn -f "Richard Almanza" anaeru
 echo "anaeru ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudo-users.conf
 
+# Reboot
+exit
+umount -R /mnt
+reboot
