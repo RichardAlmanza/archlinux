@@ -101,3 +101,4 @@ nvim /boot/loader/entries/arch.conf
 
 systemctl enable NetworkManager.service
 systemctl enable gdm.service
+systemctl enable fstrim.timer
