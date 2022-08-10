@@ -76,3 +76,7 @@ echo "arch-wolf" > /etc/hostname
 mkinitcpio -P
 # Set Root password
 passwd
+
+# Boot loader
+bootctl install
+systemctl enable systemd-boot-update.service
