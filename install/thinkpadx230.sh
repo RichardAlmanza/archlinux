@@ -100,3 +100,4 @@ nvim /boot/loader/entries/arch.conf
 # options root="LABEL=arch_os" rw
 
 systemctl enable NetworkManager.service
+systemctl enable gdm.service
