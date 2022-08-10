@@ -81,3 +81,21 @@ bootctl install
 systemctl enable systemd-boot-update.service
 mkinitcpio -P
 
+nvim /boot/loader/loader.conf
+# example loader.conf https://man.archlinux.org/man/loader.conf.5#OPTIONS
+# #timeout 3
+# #console-mode keep
+# default arch-*
+# # Should be enable by default
+# #auto-entries
+# #auto-firmware  
+pacman -Sy intel-ucode
+nvim /boot/loader/entries/arch.conf
+
+# example arch.conf entre  config file
+# title   Arch Linux
+# linux   /vmlinuz-linux
+# initrd  /intel-ucode.img
+# initrd  /initramfs-linux.img
+# options root="LABEL=arch_os" rw
+
