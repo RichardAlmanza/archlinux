@@ -55,7 +55,9 @@ reflector --latest 20 --protocol https --country 'United States,Colombia,' --sav
 pacman -Sy archlinux-keyring
 pacstrap /mnt base base-devel linux linux-firmware \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
-neovim
+neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
+zsh code networkmanager nm-connection-editor network-manager-applet \
+networkmanager-openvpn networkmanager-pptp
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
