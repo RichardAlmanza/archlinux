@@ -153,8 +153,9 @@ pacman -Sy archlinux-keyring
 pacstrap /mnt base base-devel linux linux-firmware \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
 neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
-zsh networkmanager nm-connection-editor network-manager-applet \
-networkmanager-openvpn networkmanager-pptp htop tree
+zsh zsh-completions networkmanager nm-connection-editor network-manager-applet \
+networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
+kitty p7zip firefox nmap mdcat docker docker-compose
 ```
 #### Generate an fstab file
 ```bash
@@ -236,10 +237,12 @@ example arch.conf entry  config file
 ### Enable services
 * Network manager service
 * Gnome display manager
+* Docker 
 * Weekly trim for the SSD
 ```bash
 systemctl enable NetworkManager.service
 systemctl enable gdm.service
+systemctl enable docker.service
 systemctl enable fstrim.timer
 ```
 ### Add users
