@@ -42,8 +42,12 @@
       - [Unmount partitions recursively](#unmount-partitions-recursively)
       - [Reboot or Shutdown laptop](#reboot-or-shutdown-laptop)
 - [Post-installation](#post-installation)
+  - [Activate pacman options](#activate-pacman-options)
   - [Update system](#update-system)
-  - [Install Paru, a Pacman wrapper](#install-paru-a-pacman-wrapper)
+  - [Create base directory tree](#create-base-directory-tree)
+  - [Install AUR packages](#install-aur-packages)
+    - [Install Paru, a Pacman wrapper and AUR helper](#install-paru-a-pacman-wrapper-and-aur-helper)
+    - [Install Oh-my-zsh](#install-oh-my-zsh)
 
 # Installation
 ## Laptop Thinkpad X230
@@ -270,10 +274,49 @@ reboot now
 shutdown now
 ```
 # Post-installation
+In Gnome add source input Spanish(Latin America) in Settings > Keyboard
+## Activate pacman options
+Uncomment the following options in the _**Misc options**_ section
+* Color
+* ParallelDownloads
+```bash
+sudo nvim /etc/pacman.conf
+```
+Example 
+>```ls
+>...
+># Misc options
+>#UseSyslog
+>Color
+>#NoProgressBar
+>CheckSpace
+>#VerbosePkgLists
+>ParallelDownloads = 5
+>...
+>```
+
 ## Update system
 ```bash
 sudo pacman -Syu
 ```
-## Install Paru, a Pacman wrapper
+## Create base directory tree
+```bash
+mkdir -p ~/repositories/personal ~/repositories/others ~/repositories/personal ~/repositories/work ~/repositories/use
+```
+## Install AUR packages
+### Install Paru, a Pacman wrapper and AUR helper
+```bash
+pushd ~/repositories/use
+git clone --depth=1 https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+popd
+```
+### Install Oh-my-zsh
+```bash
+export ZSH=$HOME/repositories/use/oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+```
 
 <!-- oh my zsh, fzf, dive, cheat -->
