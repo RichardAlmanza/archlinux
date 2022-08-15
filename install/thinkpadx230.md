@@ -41,6 +41,9 @@
       - [Exit from **chroot**](#exit-from-chroot)
       - [Unmount partitions recursively](#unmount-partitions-recursively)
       - [Reboot or Shutdown laptop](#reboot-or-shutdown-laptop)
+- [Post-installation](#post-installation)
+  - [Update system](#update-system)
+  - [Install Paru, a Pacman wrapper](#install-paru-a-pacman-wrapper)
 
 # Installation
 ## Laptop Thinkpad X230
@@ -150,8 +153,8 @@ pacman -Sy archlinux-keyring
 pacstrap /mnt base base-devel linux linux-firmware \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
 neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
-zsh code networkmanager nm-connection-editor network-manager-applet \
-networkmanager-openvpn networkmanager-pptp
+zsh networkmanager nm-connection-editor network-manager-applet \
+networkmanager-openvpn networkmanager-pptp htop tree
 ```
 #### Generate an fstab file
 ```bash
