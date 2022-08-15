@@ -263,3 +263,11 @@ reboot now
 ```bash
 shutdown now
 ```
+# Post-installation
+## Update system
+```bash
+sudo pacman -Syu
+```
+## Install Paru, a Pacman wrapper
+
+<!-- oh my zsh, fzf, dive, cheat -->
