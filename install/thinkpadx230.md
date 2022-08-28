@@ -30,6 +30,7 @@
       - [Create locale file and select language](#create-locale-file-and-select-language)
       - [Make the input layout persistent](#make-the-input-layout-persistent)
       - [Set hostname](#set-hostname)
+      - [Add routes](#add-routes)
       - [Set Root password](#set-root-password)
     - [Install Boot Loader](#install-boot-loader)
       - [Edit boot loader config file](#edit-boot-loader-config-file)
@@ -48,6 +49,7 @@
   - [Install AUR packages](#install-aur-packages)
     - [Install Paru, a Pacman wrapper and AUR helper](#install-paru-a-pacman-wrapper-and-aur-helper)
     - [Install Oh-my-zsh](#install-oh-my-zsh)
+    - [Install AUR packages](#install-aur-packages-1)
 
 # Installation
 ## Laptop Thinkpad X230
@@ -159,7 +161,8 @@ gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
 neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
 zsh zsh-completions networkmanager nm-connection-editor network-manager-applet \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
-kitty p7zip firefox nmap mdcat docker docker-compose
+kitty p7zip firefox nmap mdcat docker docker-compose bat \
+man-db man-pages texinfo obsidian tmux
 ```
 #### Generate an fstab file
 ```bash
@@ -197,6 +200,10 @@ echo "KEYMAP=es" > /etc/vconsole.conf
 #### Set hostname
 ```bash
 echo "arch-wolf" > /etc/hostname
+```
+#### Add routes
+```bash
+echo -e "#<ip-address>  <hostname.domain.org>  <hostname>\n127.0.0.1  localhost.localdomain  arch-wolf\n::1  localhost.localdomain  arch-wolf" >> /etc/hosts
 ```
 #### Set Root password
 ```bash
@@ -239,11 +246,13 @@ example arch.conf entry  config file
 >options root=PARTUUID=a38fedd8-6fdd-4638-885f-a2411aefc1f1 rw
 >```
 ### Enable services
+* WPA supplicant
 * Network manager service
 * Gnome display manager
 * Docker 
 * Weekly trim for the SSD
 ```bash
+systemctl enable wpa_supplicant.service
 systemctl enable NetworkManager.service
 systemctl enable gdm.service
 systemctl enable docker.service
@@ -317,6 +326,10 @@ popd
 export ZSH=$HOME/repositories/use/oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+```
+### Install AUR packages
+```bash
+paru -S visual-studio-code-bin
 ```
 
 <!-- oh my zsh, fzf, dive, cheat -->
