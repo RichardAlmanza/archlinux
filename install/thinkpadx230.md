@@ -331,7 +331,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 ```
 ### Install AUR packages
 ```bash
-paru -S visual-studio-code-bin tmuxinator 1password 1password-cli
+paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki
 ```
 
 <!-- oh my zsh, fzf, dive, cheat -->
