@@ -30,7 +30,7 @@ bkup_old () {
 }
 
 create_links () {
-    
+
     for FILE in ${@:2}
     do
         ORIGEN=$FILE
@@ -38,6 +38,14 @@ create_links () {
         bkup_old $DESTINATION
         ln -sv $ORIGEN $DESTINATION
     done
+}
+
+link_config_dirs () {
+    CONFIG_USER_DIR=$HOME/.config
+    REPO_CONFIG_DIRS=$PWD/*/
+
+    create_links $CONFIG_USER_DIR $REPO_CONFIG_DIRS
+    rm $CONFIG_USER_DIR/oh-my-zsh
 }
 
 omz_config () {
@@ -52,12 +60,5 @@ omz_config () {
     rm_broken_links $ZSH_CUSTOM
 }
 
-lsd_config () {
-    CONFIG_USER_DIR=$HOME/.config
-    REPO_CONFIG_DIR=$PWD/lsd
-
-    create_links $CONFIG_USER_DIR $REPO_CONFIG_DIR
-}
-
 omz_config
-lsd_config
+link_config_dirs
