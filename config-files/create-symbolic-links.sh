@@ -1,5 +1,8 @@
 #! /usr/bin/sh
 
+WORKING_FILE=$(readlink -e $0)
+WORKING_DIR=$(dirname $WORKING_FILE)
+
 # Functions
 rm_broken_links () {
     BROKEN_LINKS=$(find $1 -xtype l)
@@ -22,7 +25,7 @@ bkup_old () {
     for FILE in $@
     do
         if [[ "inode/symlink" == $(file --brief --mime-type $FILE) ]]; then
-            rm -v $FILE
+            rm $FILE
         else
             mv -v $FILE "${FILE}_${DATE_BK}"
         fi
@@ -30,11 +33,12 @@ bkup_old () {
 }
 
 create_links () {
+    DESTINATION_DIR=$1
 
     for FILE in ${@:2}
     do
         ORIGEN=$FILE
-        DESTINATION=$1/$(basename $FILE)
+        DESTINATION=$DESTINATION_DIR/$(basename $FILE)
         bkup_old $DESTINATION
         ln -sv $ORIGEN $DESTINATION
     done
@@ -42,20 +46,20 @@ create_links () {
 
 link_config_dirs () {
     CONFIG_USER_DIR=$HOME/.config
-    REPO_CONFIG_DIRS=$PWD/*/
+    REPO_CONFIG_DIRS=$WORKING_DIR/others/*/
 
     create_links $CONFIG_USER_DIR $REPO_CONFIG_DIRS
-    rm $CONFIG_USER_DIR/oh-my-zsh
 }
 
 omz_config () {
     ZSH_CUSTOM=$ZSH/custom
-    REPO_ZSH=$PWD/oh-my-zsh
-    REPO_ZSH_CUSTOM=$PWD/oh-my-zsh/zsh_custom
+    REPO_ZSH=$WORKING_DIR/oh-my-zsh
+    REPO_ZSH_CUSTOM=$WORKING_DIR/oh-my-zsh/zsh_custom
 
     create_links $HOME $REPO_ZSH/.zshrc
     create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/*.zsh
     create_links $ZSH_CUSTOM/themes $REPO_ZSH_CUSTOM/themes/*
+    create_links $ZSH_CUSTOM/plugins $REPO_ZSH_CUSTOM/plugins/*
     
     rm_broken_links $ZSH_CUSTOM
 }
