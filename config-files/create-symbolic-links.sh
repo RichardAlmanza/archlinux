@@ -44,10 +44,28 @@ create_links () {
     done
 }
 
+clone_repos () {
+    DIRECTORY=$1
+    REPOSITORIES=(${@:2})
+
+    pushd $DIRECTORY
+
+    for ITER in $(seq 1 2 ${#REPOSITORIES[@]})
+    do
+        NAME=${REPOSITORIES[@]:$(($ITER - 1)):1}
+        REPOSITORY=${REPOSITORIES[@]:$ITER:1}
+
+        git clone --depth=1 $REPOSITORY $DIRECTORY/$NAME
+    done
+
+    popd
+}
+
 link_config_dirs () {
     CONFIG_USER_DIR=$HOME/.config
     REPO_CONFIG_DIRS=$WORKING_DIR/others/*/
 
+    echo "Creating links for some programs' config files"
     create_links $CONFIG_USER_DIR $REPO_CONFIG_DIRS
 }
 
@@ -55,7 +73,14 @@ omz_config () {
     ZSH_CUSTOM=$ZSH/custom
     REPO_ZSH=$WORKING_DIR/oh-my-zsh
     REPO_ZSH_CUSTOM=$WORKING_DIR/oh-my-zsh/zsh_custom
+    CLONE_PLUGINS=(
+        "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    )
 
+    echo "Cloning plugins for oh-my-zsh"
+    clone_repos $REPO_ZSH_CUSTOM/plugins ${CLONE_PLUGINS[@]}
+
+    echo "Creating links for oh-my-zsh config files"
     create_links $HOME $REPO_ZSH/.zshrc
     create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/*.zsh
     create_links $ZSH_CUSTOM/themes $REPO_ZSH_CUSTOM/themes/*
