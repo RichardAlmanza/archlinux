@@ -162,7 +162,8 @@ neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
 zsh zsh-completions networkmanager nm-connection-editor network-manager-applet \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 kitty p7zip firefox nmap mdcat docker docker-compose bat \
-man-db man-pages texinfo obsidian tmux plocate lsd acpi
+man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
+discord gimp ttf-fira-code
 ```
 #### Generate an fstab file
 ```bash
@@ -331,7 +332,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 ```
 ### Install AUR packages
 ```bash
-paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki
+paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki \
+dive slack-desktop skypeforlinux-stable-bin
 ```
-
-<!-- oh my zsh, fzf, dive, cheat -->
