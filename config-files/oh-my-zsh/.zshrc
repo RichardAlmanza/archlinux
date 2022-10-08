@@ -88,6 +88,8 @@ plugins=(
 export FZF_BASE='/usr/share/fzf'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
