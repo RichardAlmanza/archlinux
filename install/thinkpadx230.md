@@ -163,7 +163,7 @@ zsh zsh-completions networkmanager nm-connection-editor \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 kitty p7zip firefox nmap mdcat docker docker-compose bat \
 man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
-discord gimp ttf-fira-code
+discord gimp ttf-fira-code vlc i2c-tools upower
 ```
 #### Generate an fstab file
 ```bash
@@ -333,5 +333,5 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 ### Install AUR packages
 ```bash
 paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki \
-dive slack-desktop skypeforlinux-stable-bin
+dive slack-desktop skypeforlinux-stable-bin cheat gnome-browser-connector
 ```
