@@ -50,6 +50,8 @@
     - [Install Paru, a Pacman wrapper and AUR helper](#install-paru-a-pacman-wrapper-and-aur-helper)
     - [Install Oh-my-zsh](#install-oh-my-zsh)
     - [Install AUR packages](#install-aur-packages-1)
+  - [Setup](#setup)
+    - [Sensors](#sensors)
 
 # Installation
 ## Laptop Thinkpad X230
@@ -335,3 +337,21 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki \
 dive slack-desktop skypeforlinux-stable-bin cheat gnome-browser-connector
 ```
+
+## Setup
+### Sensors
+```bash
+sudo modprobe i2c_dev
+sudo modprobe eeprom
+sudo modprobe drivetemp
+sudo modprobe thinkpad_acpi
+echo -e "i2c_dev\neeprom\ndrivetemp\nthinkpad_acpi" | sudo tee /etc/modules-load.d/sensors.conf
+sudo sensors-detect --auto
+```
+<!-- 
+Might be installed
+https://wiki.archlinux.org/title/TLP
+
+TODO
+run create-symbolic-links.sh
+-->
