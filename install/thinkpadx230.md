@@ -158,8 +158,8 @@ pacman -Sy archlinux-keyring
 ```bash
 pacstrap /mnt base base-devel linux linux-firmware \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
-neovim vim seahorse lm_sensors sensors-applet smartmontools hddtemp \
-zsh zsh-completions networkmanager nm-connection-editor network-manager-applet \
+neovim vim seahorse lm_sensors smartmontools hddtemp \
+zsh zsh-completions networkmanager nm-connection-editor \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 kitty p7zip firefox nmap mdcat docker docker-compose bat \
 man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
