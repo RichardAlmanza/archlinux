@@ -50,6 +50,8 @@
     - [Install Paru, a Pacman wrapper and AUR helper](#install-paru-a-pacman-wrapper-and-aur-helper)
     - [Install Oh-my-zsh](#install-oh-my-zsh)
     - [Install AUR packages](#install-aur-packages-1)
+  - [Install others programs](#install-others-programs)
+    - [Install AWS-CLI](#install-aws-cli)
   - [Setup](#setup)
     - [Sensors](#sensors)
 
@@ -336,6 +338,17 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 ```bash
 paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki \
 dive slack-desktop skypeforlinux-stable-bin cheat gnome-browser-connector
+```
+## Install others programs
+### Install AWS-CLI
+[Ref: Getting Started Install](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+```bash
+pushd /tmp
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+rm -rf aws
+popd
 ```
 
 ## Setup
