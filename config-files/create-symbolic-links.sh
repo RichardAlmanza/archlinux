@@ -83,6 +83,7 @@ omz_config () {
     echo "Creating links for oh-my-zsh config files"
     create_links $HOME $REPO_ZSH/.zshrc
     create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/*.zsh
+    create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/completions
     create_links $ZSH_CUSTOM/themes $REPO_ZSH_CUSTOM/themes/*
     create_links $ZSH_CUSTOM/plugins $REPO_ZSH_CUSTOM/plugins/*
     
