@@ -47,14 +47,18 @@
   - [Activate pacman options](#activate-pacman-options)
   - [Update system](#update-system)
   - [Create base directory tree](#create-base-directory-tree)
+  - [Install Oh-my-zsh](#install-oh-my-zsh)
   - [Install AUR packages](#install-aur-packages)
     - [Install Paru, a Pacman wrapper and AUR helper](#install-paru-a-pacman-wrapper-and-aur-helper)
-    - [Install Oh-my-zsh](#install-oh-my-zsh)
     - [Install AUR packages](#install-aur-packages-1)
   - [Install others programs](#install-others-programs)
     - [Install AWS-CLI](#install-aws-cli)
+    - [Install GO (lang)](#install-go-lang)
+    - [Instal HUGO](#instal-hugo)
   - [Setup](#setup)
     - [Sensors](#sensors)
+    - [Docker](#docker)
+      - [Manage Docker as a non-root user](#manage-docker-as-a-non-root-user)
 
 # Installation
 
@@ -84,7 +88,7 @@ ping archlinux.org -c 3
 
 ```bash
 timedatectl set-ntp true
-timedatectl set-timezone America/Bogota 
+timedatectl set-timezone America/Bogota
 timedatectl status
 ```
 
@@ -145,7 +149,7 @@ Results
 
 >```st
 >Disk /dev/sda: 465.76 GiB, 500107862016 bytes, 976773168 sectors
->Disk model: Samsung SSD 860 
+>Disk model: Samsung SSD 860
 >Units: sectors of 1 * 512 = 512 bytes
 >Sector size (logical/physical): 512 bytes / 512 bytes
 >I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -213,7 +217,7 @@ zsh zsh-completions networkmanager nm-connection-editor \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 kitty p7zip firefox nmap mdcat docker docker-compose bat \
 man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
-discord gimp ttf-fira-code vlc i2c-tools upower
+discord gimp ttf-fira-code vlc i2c-tools upower bookworm
 ```
 
 #### Generate an fstab file
@@ -425,6 +429,14 @@ sudo pacman -Syu
 mkdir -p ~/repositories/personal ~/repositories/others ~/repositories/personal ~/repositories/work ~/repositories/use
 ```
 
+## Install Oh-my-zsh
+
+```bash
+export ZSH=$HOME/repositories/use/oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+```
+
 ## Install AUR packages
 
 ### Install Paru, a Pacman wrapper and AUR helper
@@ -435,14 +447,6 @@ git clone --depth=1 https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 popd
-```
-
-### Install Oh-my-zsh
-
-```bash
-export ZSH=$HOME/repositories/use/oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 ```
 
 ### Install AUR packages
@@ -467,6 +471,28 @@ rm -rf aws
 popd
 ```
 
+### Install GO (lang)
+
+[Ref: Download and install](https://go.dev/doc/install)
+
+```bash
+pushd /tmp
+curl -L "https://go.dev/dl/go1.19.5.linux-amd64.tar.gz" -o "go.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf /tmp/go.tar.gz
+popd
+```
+
+### Instal HUGO
+
+This needs [GO](#install-go-lang)
+[Ref: Build from source](https://gohugo.io/installation/linux/#build-from-source)
+
+```bash
+go install -tags extended github.com/gohugoio/hugo@latest
+sudo ln -s $HOME/go/bin/hugo /usr/local/bin/hugo
+```
+
 ## Setup
 
 ### Sensors
@@ -479,8 +505,18 @@ sudo modprobe thinkpad_acpi
 echo -e "i2c_dev\neeprom\ndrivetemp\nthinkpad_acpi" | sudo tee /etc/modules-load.d/sensors.conf
 sudo sensors-detect --auto
 ```
+### Docker
 
-<!-- 
+[Ref: Post-installation steps for linux](https://docs.docker.com/engine/install/linux-postinstall/)
+
+#### Manage Docker as a non-root user
+
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+
+<!--
 Might be installed
 https://wiki.archlinux.org/title/TLP
 
