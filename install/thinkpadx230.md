@@ -50,11 +50,12 @@
   - [Install Oh-my-zsh](#install-oh-my-zsh)
   - [Install AUR packages](#install-aur-packages)
     - [Install Paru, a Pacman wrapper and AUR helper](#install-paru-a-pacman-wrapper-and-aur-helper)
-    - [Install AUR packages](#install-aur-packages-1)
+    - [Install AUR packages with paru](#install-aur-packages-with-paru)
   - [Install others programs](#install-others-programs)
     - [Install AWS-CLI](#install-aws-cli)
     - [Install GO (lang)](#install-go-lang)
-    - [Instal HUGO](#instal-hugo)
+    - [Install HUGO](#install-hugo)
+    - [Install Exercism CLI](#install-exercism-cli)
   - [Setup](#setup)
     - [Sensors](#sensors)
     - [Docker](#docker)
@@ -449,7 +450,7 @@ makepkg -si
 popd
 ```
 
-### Install AUR packages
+### Install AUR packages with paru
 
 ```bash
 paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki \
@@ -483,7 +484,7 @@ sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 popd
 ```
 
-### Instal HUGO
+### Install HUGO
 
 This needs [GO](#install-go-lang)
 [Ref: Build from source](https://gohugo.io/installation/linux/#build-from-source)
@@ -491,6 +492,19 @@ This needs [GO](#install-go-lang)
 ```bash
 go install -tags extended github.com/gohugoio/hugo@latest
 sudo ln -s $HOME/go/bin/hugo /usr/local/bin/hugo
+```
+
+### Install Exercism CLI
+
+[Ref: CLI Walkthrough](https://exercism.org/cli-walkthrough)
+[Releases](https://github.com/exercism/cli/releases/latest)
+
+```bash
+pushd /tmp
+curl -L "https://github.com/exercism/cli/releases/download/v3.1.0/exercism-3.1.0-linux-x86_64.tar.gz" -o exercism.tar.gz
+sudo mv exercism /usr/local/bin/exercism
+exercism configure --token=<token> --workspace=<path-to-exercism-solutions-repository>
+popd
 ```
 
 ## Setup
@@ -505,6 +519,7 @@ sudo modprobe thinkpad_acpi
 echo -e "i2c_dev\neeprom\ndrivetemp\nthinkpad_acpi" | sudo tee /etc/modules-load.d/sensors.conf
 sudo sensors-detect --auto
 ```
+
 ### Docker
 
 [Ref: Post-installation steps for linux](https://docs.docker.com/engine/install/linux-postinstall/)
