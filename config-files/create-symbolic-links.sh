@@ -6,7 +6,7 @@ WORKING_DIR=$(dirname $WORKING_FILE)
 # Functions
 rm_broken_links () {
     BROKEN_LINKS=$(find $1 -xtype l)
-    
+
     if [[ -n "$BROKEN_LINKS" ]]; then
         echo "Broken links found in $1"
 
@@ -84,9 +84,10 @@ omz_config () {
     create_links $HOME $REPO_ZSH/.zshrc
     create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/*.zsh
     create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/completions
+    create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/scripts
     create_links $ZSH_CUSTOM/themes $REPO_ZSH_CUSTOM/themes/*
     create_links $ZSH_CUSTOM/plugins $REPO_ZSH_CUSTOM/plugins/*
-    
+
     rm_broken_links $ZSH_CUSTOM
 }
 
