@@ -32,7 +32,7 @@ finish() {
 
     get_file_name() {
         case $track in
-            "go") echo "$exercise.go" ;;
+            "go") echo "$(echo $exercise | tr '-' '_').go" ;;
         esac
     }
 
@@ -50,7 +50,6 @@ run_start=false
 run_finish=false
 track=unset
 exercise=unset
-file_name=unset
 
 options=$(getopt --name exercism_actions --longoptions start,finish,solution-file: -- "" $@)
 
