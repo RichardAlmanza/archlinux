@@ -14,14 +14,13 @@ alias llt='lsd -hl --tree'
 # $1 Track eg. Go; $2 Exercise eg. need-for-speed
 function exercism_actions() {
     action=$1
-    track=$2
-    exercise=$3
+    shift
 
     if [ $action = "start" ]; then
-        sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --start $track $exercise
+        sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --start $@
         return $?
     elif [ $action = "finish" ]; then
-        sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --finish $track $exercise
+        sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --finish $@
         return $?
     fi
 

@@ -5,7 +5,8 @@ set -e
 
 usage()
 {
-  echo "Usage: exercism_actions [ --start | --finish ] track exercise"
+  echo "Usage: exercism_actions [ --start | --finish ] track exercise
+                        [ --start | --finish ] --solution-file file-name track exercise"
   exit 2
 }
 
@@ -35,11 +36,13 @@ finish() {
         esac
     }
 
+    file_name=${file_name:-$(get_file_name)}
+
     pushd $workspace_path/$exercise_path
         run_test
-        git add $(get_file_name)
+        git add $file_name
         git commit --message "${exercise_path} solution"
-        exercism submit $(get_file_name)
+        exercism submit $file_name
     popd
 }
 
@@ -47,8 +50,9 @@ run_start=false
 run_finish=false
 track=unset
 exercise=unset
+file_name=unset
 
-options=$(getopt --name exercism_actions --longoptions start,finish -- "" $@)
+options=$(getopt --name exercism_actions --longoptions start,finish,solution-file: -- "" $@)
 
 valid_options=$?
 
@@ -62,6 +66,7 @@ while true; do
     case $1 in
         --start) run_start=true; shift;;
         --finish) run_finish=true; shift;;
+        --solution-file) file_name=$2; shift 2;;
         --) shift; break;;
         *) echo "Unexpected option: $1 - this should not happen."; usage;;
     esac
