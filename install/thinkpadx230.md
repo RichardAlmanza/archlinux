@@ -308,7 +308,7 @@ Example [loader.conf](https://man.archlinux.org/man/loader.conf.5#OPTIONS)
 >```ls
 >#timeout 3
 >#console-mode keep
->default arch-*
+>default arch.conf
 ># Should be enable by default
 >#auto-entries
 >#auto-firmware
@@ -334,6 +334,12 @@ example arch.conf entry  config file
 >initrd  /intel-ucode.img
 >initrd  /initramfs-linux.img
 >options root=PARTUUID=a38fedd8-6fdd-4638-885f-a2411aefc1f1 rw
+>```
+>
+>Check PartUUID using the following command
+>
+>```bash
+>lsblk -o name,label,size,fstype,partuuid
 >```
 
 ### Enable services
