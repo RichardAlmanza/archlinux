@@ -404,7 +404,7 @@ chmod 600 /etc/samba/credentials/blackbox
 cat <<EOF >> /etc/fstab
 
 # Blackbox shared folder
-//<server>/<sharename> /home/anaeru/shared cifs noauto,x-systemd.automount,x-systemd.mount-timeout=30,_netdev,nofail,credentials=/etc/samba/credentials/blackbox 0 0
+//<server>/<sharename> /home/anaeru/shared cifs noauto,x-systemd.automount,x-systemd.mount-timeout=30,_netdev,nofail,vers=3.0,uid=1000,gid=1000,credentials=/etc/samba/credentials/blackbox 0 0
 EOF
 ```
 
