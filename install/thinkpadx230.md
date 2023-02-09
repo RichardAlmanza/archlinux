@@ -39,6 +39,11 @@
       - [Add config file for Arch entry](#add-config-file-for-arch-entry)
     - [Enable services](#enable-services)
     - [Add users](#add-users)
+    - [Setup Shared folder (CIFS)](#setup-shared-folder-cifs)
+      - [Add SAMBA folders](#add-samba-folders)
+      - [Add smb.config](#add-smbconfig)
+      - [Add credentials](#add-credentials)
+      - [add mount at boot](#add-mount-at-boot)
     - [Final steps](#final-steps)
       - [Exit from **chroot**](#exit-from-chroot)
       - [Unmount partitions recursively](#unmount-partitions-recursively)
@@ -218,7 +223,7 @@ zsh zsh-completions networkmanager nm-connection-editor \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 kitty p7zip firefox nmap mdcat docker docker-compose bat \
 man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
-discord gimp ttf-fira-code vlc i2c-tools upower bookworm
+discord gimp ttf-fira-code vlc i2c-tools upower bookworm cifs-utils
 ```
 
 #### Generate an fstab file
@@ -368,7 +373,39 @@ Add users using zsh as default Shell, and with sudo permissions
 useradd -m -s /bin/zsh anaeru
 passwd anaeru
 chfn -f "Richard Almanza" anaeru
-echo "anaeru ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudo-users.conf
+echo "anaeru ALL=(ALL:ALL) ALL" > /etc/sudoers.d/anaeru
+```
+
+### Setup Shared folder (CIFS)
+
+#### Add SAMBA folders
+
+```bash
+mkdir -p /etc/samba/credentials
+chmod 700 /etc/samba/credentials
+```
+
+#### Add smb.config
+
+```bash
+touch /etc/samba/smb.config
+```
+
+#### Add credentials
+
+```bash
+echo -e "username=<NAS-Username>\npassword=<MyPassword>" > /etc/samba/credentials/blackbox
+chmod 600 /etc/samba/credentials/blackbox
+```
+
+#### add mount at boot
+
+```bash
+cat <<EOF >> /etc/fstab
+
+# Blackbox shared folder
+//<server>/<sharename> /home/anaeru/shared cifs noauto,x-systemd.automount,x-systemd.mount-timeout=30,_netdev,nofail,credentials=/etc/samba/credentials/blackbox 0 0
+EOF
 ```
 
 ### Final steps
