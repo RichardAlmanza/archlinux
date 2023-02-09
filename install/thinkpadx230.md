@@ -497,7 +497,7 @@ popd
 
 ```bash
 paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki \
-dive slack-desktop skypeforlinux-stable-bin cheat gnome-browser-connector
+dive slack-desktop skypeforlinux-stable-bin cheat gnome-browser-connector google-chrome
 ```
 
 ## Install others programs
