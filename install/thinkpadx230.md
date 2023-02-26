@@ -63,6 +63,7 @@
     - [Install Exercism CLI](#install-exercism-cli)
   - [Setup](#setup)
     - [Sensors](#sensors)
+    - [Syncthing](#syncthing)
     - [Docker](#docker)
       - [Manage Docker as a non-root user](#manage-docker-as-a-non-root-user)
 
@@ -223,7 +224,8 @@ zsh zsh-completions networkmanager nm-connection-editor \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 kitty p7zip firefox nmap mdcat docker docker-compose bat \
 man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
-discord gimp ttf-fira-code vlc i2c-tools upower bookworm cifs-utils
+discord gimp ttf-fira-code vlc i2c-tools upower bookworm cifs-utils \
+syncthing
 ```
 
 #### Generate an fstab file
@@ -561,6 +563,12 @@ sudo modprobe drivetemp
 sudo modprobe thinkpad_acpi
 echo -e "i2c_dev\neeprom\ndrivetemp\nthinkpad_acpi" | sudo tee /etc/modules-load.d/sensors.conf
 sudo sensors-detect --auto
+```
+
+### Syncthing
+
+```bash
+systemctl --user enable syncthing.service
 ```
 
 ### Docker
