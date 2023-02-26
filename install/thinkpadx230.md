@@ -547,6 +547,7 @@ sudo ln -s $HOME/go/bin/hugo /usr/local/bin/hugo
 ```bash
 pushd /tmp
 curl -L "https://github.com/exercism/cli/releases/download/v3.1.0/exercism-3.1.0-linux-x86_64.tar.gz" -o exercism.tar.gz
+tar -xzvf exercism.tar.gz
 sudo mv exercism /usr/local/bin/exercism
 exercism configure --token=<token> --workspace=<path-to-exercism-solutions-repository>
 popd
