@@ -13,16 +13,11 @@ alias llt='lsd -hl --tree'
 # needs Exercism and a configured --workspace; Git; VSCode
 # $1 Track eg. Go; $2 Exercise eg. need-for-speed
 function exercism_actions() {
-    action=$1
-    shift
+    track=$1
+    exercise=$2
+    action=$3
 
-    if [ $action = "start" ]; then
-        sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --start $@
-        return $?
-    elif [ $action = "finish" ]; then
-        sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --finish $@
-        return $?
-    fi
-
+    sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --$action $track $exercise
+    return $?
 }
 # [Extras]
