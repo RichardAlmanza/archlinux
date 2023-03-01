@@ -5,8 +5,8 @@ set -e
 
 usage()
 {
-  echo "Usage: exercism_actions [ --start | --finish ] track exercise
-                        [ --start | --finish ] --solution-file file-name track exercise"
+  echo "Usage: exercism_actions [ --start | --finish | --test ] track exercise
+                        [ --start | --finish | --test ] --solution-file file-name track exercise"
   exit 2
 }
 
@@ -21,21 +21,25 @@ start() {
     code $workspace_path/$exercise_path
 }
 
+get_file_name() {
+    case $track in
+        "go") echo "$(echo $exercise | tr '-' '_').go" ;;
+        "elixir") echo "lib/$(echo $exercise | tr '-' '_').exs" ;;
+    esac
+}
+
+run_test() {
+    case $track in
+        "go")
+            go test -v .
+        ;;
+        "elixir")
+            docker run -it -v $PWD:/app --workdir=/app --rm elixir mix test
+        ;;
+    esac
+}
+
 finish() {
-    run_test() {
-        case $track in
-            "go")
-                go test -v .
-            ;;
-        esac
-    }
-
-    get_file_name() {
-        case $track in
-            "go") echo "$(echo $exercise | tr '-' '_').go" ;;
-        esac
-    }
-
     file_name=${file_name:-$(get_file_name)}
 
     pushd $workspace_path/$exercise_path
@@ -48,10 +52,11 @@ finish() {
 
 run_start=false
 run_finish=false
+run_test=false
 track=unset
 exercise=unset
 
-options=$(getopt --name exercism_actions --longoptions start,finish,solution-file: -- "" $@)
+options=$(getopt --name exercism_actions --longoptions start,finish,test,solution-file: -- "" $@)
 
 valid_options=$?
 
@@ -65,6 +70,7 @@ while true; do
     case $1 in
         --start) run_start=true; shift;;
         --finish) run_finish=true; shift;;
+        --test) run_test=true; shift;;
         --solution-file) file_name=$2; shift 2;;
         --) shift; break;;
         *) echo "Unexpected option: $1 - this should not happen."; usage;;
@@ -82,4 +88,8 @@ fi
 
 if [ $run_finish == "true" ]; then
     finish
+fi
+
+if [ $run_test == "true" ]; then
+    run_test
 fi
