@@ -24,7 +24,7 @@ start() {
 get_file_name() {
     case $track in
         "go") echo "$(echo $exercise | tr '-' '_').go" ;;
-        "elixir") echo "lib/$(echo $exercise | tr '-' '_').exs" ;;
+        "elixir") echo "lib/$(echo $exercise | tr '-' '_').ex" ;;
     esac
 }
 
