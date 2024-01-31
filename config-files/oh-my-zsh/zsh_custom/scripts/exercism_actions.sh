@@ -34,6 +34,7 @@ get_file_name() {
     case $track in
         "go") echo "$(echo "$exercise" | tr '-' '_').go" ;;
         "elixir") echo "lib/$(echo "$exercise" | tr '-' '_').ex" ;;
+        "rust") echo "src/lib.rs" ;;
     esac
 }
 
@@ -46,6 +47,9 @@ run_test() {
         ;;
         "elixir")
             docker run -it -v "$PWD":/app --workdir=/app --rm elixir mix test
+        ;;
+        "rust")
+            docker run -it -v "$PWD":/app --workdir=/app --rm rust cargo test -- --include-ignored --show-output
         ;;
     esac
 
