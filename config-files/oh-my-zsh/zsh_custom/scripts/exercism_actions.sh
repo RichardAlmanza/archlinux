@@ -38,18 +38,33 @@ get_file_name() {
     esac
 }
 
+run_docker() {
+    case $track in
+        "go")
+            docker run -it -v "$PWD":/app --workdir=/app --rm "$@"
+        ;;
+        *)
+            docker run -it -v "$PWD":/app --workdir=/app --rm --user "$(id -u)":"$(id -g)" "$@"
+        ;;
+    esac
+}
+
 run_test() {
+    go_tag="1-alpine3.19"
+    elixir_tag="alpine"
+    rust_tag="1-alpine3.19"
+
     pushd "$workspace_path"/"$exercise_path"
 
     case $track in
         "go")
-            go test -v .
+            run_docker golang:"$go_tag" go test -v --bench . --benchmem
         ;;
         "elixir")
-            docker run -it -v "$PWD":/app --workdir=/app --rm elixir mix test
+            run_docker elixir:"$elixir_tag" mix test
         ;;
         "rust")
-            docker run -it -v "$PWD":/app --workdir=/app --rm rust cargo test -- --include-ignored --show-output
+            run_docker rust:"$rust_tag" cargo test -- --include-ignored --show-output
         ;;
     esac
 
