@@ -10,6 +10,14 @@ alias llt='lsd -hl --tree'
 
 # [FUNCTIONS]
 
+function find-aliases() {
+    alias | grep -i "$*"
+}
+
+function fa() {
+    find-aliases "$@"
+}
+
 # needs Exercism and a configured --workspace; Git; VSCode
 # $1 Track eg. Go; $2 Exercise eg. need-for-speed
 function exercism_actions() {
