@@ -17,7 +17,9 @@ function exercism_actions() {
     exercise=$2
     action=$3
 
-    sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --$action $track $exercise
+    # Arch uses bash as sh  ||  linked /bin/sh => /bin/bash
+    # This messes up other distros like Ubuntu
+    sh "$ZSH_CUSTOM/scripts/exercism_actions.sh" --$action -- $track $exercise
     return $?
 }
 # [Extras]
