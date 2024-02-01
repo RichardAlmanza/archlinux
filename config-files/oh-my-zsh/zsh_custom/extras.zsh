@@ -11,7 +11,20 @@ alias llt='lsd -hl --tree'
 # [FUNCTIONS]
 
 function find-aliases() {
-    alias | grep -i "$*"
+    regx="($1"
+    second_regx="([a-zA-Z]*$1[a-zA-Z]*"
+    shift
+
+    while [ "$#" -gt 0 ]; do
+        regx="${regx}).*($1"
+        second_regx="${second_regx}|[a-zA-Z]*$1[a-zA-Z]*"
+        shift
+    done
+
+    regx="${regx})"
+    second_regx="${second_regx})"
+
+    alias | grep -i -E "$regx" | grep -i -E "$second_regx"
 }
 
 function fa() {
