@@ -1,0 +1,12 @@
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+# Inline array of table representation
+# enabled = [
+#     { command = "xdg-open", hyperlink = true, post_processing = true, persist = false, mouse.enable = true, binding = { key = "U", mods = "Control|Shift", regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+" } },
+# ]
+
+[[hints.enabled]]
+regex = "[^ ]+\\.rs:\\d+:\\d+"
+command = { program = "code", args = ["--goto"] }
+mouse = { enabled = true }

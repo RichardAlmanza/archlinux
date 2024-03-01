@@ -1,0 +1,5 @@
+[bell]
+animation = "Linear"
+duration = 200
+color = "#000000"
+command = "None"

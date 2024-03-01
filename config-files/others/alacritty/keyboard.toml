@@ -1,0 +1,8 @@
+[keyboard]
+
+# Default key binding https://alacritty.org/config-alacritty-bindings.html
+# man alacritty-bindings
+bindings = [
+    # { key = "L", mods = "Control|Shift", chars = "echo 'hello there'" },
+    { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+]

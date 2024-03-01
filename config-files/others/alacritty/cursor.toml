@@ -1,0 +1,7 @@
+[cursor]
+style = { shape = "Underline", blinking = "On" }
+vi_mode_style = "None"
+blink_interval = 500
+blink_timeout = 0
+unfocused_hollow = true
+thickness = 0.15
