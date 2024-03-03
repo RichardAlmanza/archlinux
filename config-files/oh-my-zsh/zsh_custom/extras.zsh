@@ -31,6 +31,20 @@ function fa() {
     find-aliases "$@"
 }
 
+function blackbox() {
+    userid="1000"
+    groupid="1000"
+    credentials="/etc/samba/credentials/blackbox"
+    smb_path="//192.168.1.36/Richard"
+    mount_path="/home/anaeru/shared"
+
+    if mount | grep -qs "$mount_path "; then
+        sudo umount "$mount_path"
+    else
+        sudo mount -t cifs -o vers=3.0,uid=$userid,gid=$groupid,credentials=$credentials  "$smb_path" "$mount_path"
+    fi
+}
+
 # needs Exercism and a configured --workspace; Git; VSCode
 # $1 Track eg. Go; $2 Exercise eg. need-for-speed
 function exercism_actions() {

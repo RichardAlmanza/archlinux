@@ -43,7 +43,7 @@
       - [Add SAMBA folders](#add-samba-folders)
       - [Add smb.config](#add-smbconfig)
       - [Add credentials](#add-credentials)
-      - [add mount at boot](#add-mount-at-boot)
+      - [add mount at boot (optional)](#add-mount-at-boot-optional)
     - [Final steps](#final-steps)
       - [Exit from **chroot**](#exit-from-chroot)
       - [Unmount partitions recursively](#unmount-partitions-recursively)
@@ -400,7 +400,9 @@ echo -e "username=<NAS-Username>\npassword=<MyPassword>" > /etc/samba/credential
 chmod 600 /etc/samba/credentials/blackbox
 ```
 
-#### add mount at boot
+#### add mount at boot (optional)
+
+Or call the function `blackbox` to mount or umount the shared folder
 
 ```bash
 cat <<EOF >> /etc/fstab
