@@ -66,6 +66,7 @@
     - [Syncthing](#syncthing)
     - [Docker](#docker)
       - [Manage Docker as a non-root user](#manage-docker-as-a-non-root-user)
+    - [Config files](#config-files)
 
 # Installation
 
@@ -217,12 +218,12 @@ pacman -Sy archlinux-keyring
 #### Install Arch linux and other packages
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware \
+pacstrap /mnt base base-devel linux linux-firmware archlinux-keyring \
 gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
 neovim vim seahorse lm_sensors smartmontools hddtemp \
 zsh zsh-completions networkmanager nm-connection-editor \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
-kitty p7zip firefox nmap mdcat docker docker-buildx docker-compose bat \
+alacritty p7zip firefox nmap mdcat docker docker-buildx docker-compose bat \
 man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
 discord gimp ttf-fira-code vlc i2c-tools upower bookworm cifs-utils \
 syncthing
@@ -474,7 +475,7 @@ sudo pacman -Syu
 ## Create base directory tree
 
 ```bash
-mkdir -p ~/repositories/personal ~/repositories/others ~/repositories/personal ~/repositories/work ~/repositories/use
+mkdir -p ~/repositories/personal ~/repositories/others ~/repositories/work ~/repositories/use
 ```
 
 ## Install Oh-my-zsh
@@ -500,8 +501,8 @@ popd
 ### Install AUR packages with paru
 
 ```bash
-paru -S visual-studio-code-bin tmuxinator 1password 1password-cli ttf-mononoki \
-dive slack-desktop skypeforlinux-stable-bin cheat gnome-browser-connector google-chrome
+paru -S visual-studio-code-bin 1password 1password-cli ttf-mononoki \
+dive slack-desktop cheat gnome-browser-connector brave
 ```
 
 ## Install others programs
@@ -525,7 +526,7 @@ popd
 
 ```bash
 pushd /tmp
-curl -L "https://go.dev/dl/go1.19.5.linux-amd64.tar.gz" -o "go.tar.gz"
+curl -L "https://go.dev/dl/go1.22.0.linux-amd64.tar.gz" -o "go.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 popd
@@ -548,7 +549,7 @@ sudo ln -s $HOME/go/bin/hugo /usr/local/bin/hugo
 
 ```bash
 pushd /tmp
-curl -L "https://github.com/exercism/cli/releases/download/v3.1.0/exercism-3.1.0-linux-x86_64.tar.gz" -o exercism.tar.gz
+curl -L "https://github.com/exercism/cli/releases/download/v3.3.0/exercism-3.3.0-linux-x86_64.tar.gz" -o exercism.tar.gz
 tar -xzvf exercism.tar.gz
 sudo mv exercism /usr/local/bin/exercism
 exercism configure --token=<token> --workspace=<path-to-exercism-solutions-repository>
@@ -585,10 +586,13 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
+### Config files
+
+```bash
+git clone https://github.com/RichardAlmanza/archlinux.git ~/repositories/personal/archlinux
+~/repositories/personal/archlinux/config-files/create-symbolic-links.sh
+```
 <!--
 Might be installed
 https://wiki.archlinux.org/title/TLP
-
-TODO
-run create-symbolic-links.sh
 -->
