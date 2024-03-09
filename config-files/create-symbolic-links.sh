@@ -1,4 +1,4 @@
-#! /usr/bin/sh
+#! /usr/bin/bash
 
 WORKING_FILE=$(readlink -e $0)
 WORKING_DIR=$(dirname $WORKING_FILE)
@@ -24,10 +24,12 @@ bkup_old () {
 
     for FILE in $@
     do
-        if [[ "inode/symlink" == $(file --brief --mime-type $FILE) ]]; then
-            rm $FILE
-        else
-            mv -v $FILE "${FILE}_${DATE_BK}"
+        FILE_TYPE=$(file --brief --mime-type "$FILE")
+
+        if [[ "inode/symlink" == "$FILE_TYPE" ]]; then
+            rm "$FILE"
+        elif [[ "inode/directory" == "$FILE_TYPE" || "text/plain" == "$FILE_TYPE" ]]; then
+            mv -v "$FILE" "${FILE}_${DATE_BK}"
         fi
     done
 }
@@ -65,7 +67,7 @@ link_config_dirs () {
     CONFIG_USER_DIR=$HOME/.config
     REPO_CONFIG_DIRS=$WORKING_DIR/others/*/
 
-    echo "Creating links for some programs' config files"
+    echo "*** Creating/Updating links for some programs' config files ***"
     create_links $CONFIG_USER_DIR $REPO_CONFIG_DIRS
 }
 
@@ -77,10 +79,10 @@ omz_config () {
         "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting.git"
     )
 
-    echo "Cloning plugins for oh-my-zsh"
+    echo "*** Cloning plugins for oh-my-zsh ***"
     clone_repos $REPO_ZSH_CUSTOM/plugins ${CLONE_PLUGINS[@]}
 
-    echo "Creating links for oh-my-zsh config files"
+    echo "*** Creating/Updating links for oh-my-zsh config files ***"
     create_links $HOME $REPO_ZSH/.zshrc
     create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/*.zsh
     create_links $ZSH_CUSTOM $REPO_ZSH_CUSTOM/completions
