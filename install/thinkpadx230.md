@@ -67,6 +67,7 @@
     - [Docker](#docker)
       - [Manage Docker as a non-root user](#manage-docker-as-a-non-root-user)
     - [Config files](#config-files)
+    - [Config Tmux](#config-tmux)
 
 # Installation
 
@@ -592,6 +593,16 @@ sudo usermod -aG docker $USER
 git clone https://github.com/RichardAlmanza/archlinux.git ~/repositories/personal/archlinux
 ~/repositories/personal/archlinux/config-files/create-symbolic-links.sh
 ```
+
+### Config Tmux
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux
+```
+
+Inside Tmux hit `Prefix + I`, It's a capital i, `Control + Space, Shift + i`
+
 <!--
 Might be installed
 https://wiki.archlinux.org/title/TLP
