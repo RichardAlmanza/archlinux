@@ -540,7 +540,6 @@ This needs [GO](#install-go-lang)
 
 ```bash
 go install -tags extended github.com/gohugoio/hugo@latest
-sudo ln -s $HOME/go/bin/hugo /usr/local/bin/hugo
 ```
 
 ### Install Exercism CLI
