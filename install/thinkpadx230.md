@@ -590,8 +590,11 @@ sudo usermod -aG docker $USER
 ### Config files
 
 ```bash
-git clone https://github.com/RichardAlmanza/archlinux.git ~/repositories/personal/archlinux
-~/repositories/personal/archlinux/config-files/create-symbolic-links.sh
+pushd ~/repositories/personal/
+git clone https://github.com/RichardAlmanza/archlinux.git
+./archlinux/config-files/create-symbolic-links.sh
+cd archlinux
+git remote set-url origin github.com:RichardAlmanza/archlinux.git
 ```
 
 ### Config Tmux
