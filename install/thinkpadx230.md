@@ -476,7 +476,7 @@ sudo pacman -Syu
 ## Create base directory tree
 
 ```bash
-mkdir -p ~/repositories/personal ~/repositories/others ~/repositories/work ~/repositories/use
+mkdir -p ~/repositories/personal ~/repositories/others ~/repositories/work ~/repositories/use ~/.config
 ```
 
 ## Install Oh-my-zsh
