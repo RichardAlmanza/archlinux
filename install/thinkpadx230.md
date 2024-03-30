@@ -220,14 +220,14 @@ pacman -Sy archlinux-keyring
 
 ```bash
 pacstrap /mnt base base-devel linux linux-firmware archlinux-keyring \
-gnome gnome-extra kubernetes-tools kubectl-plugins linux-tools \
-neovim vim seahorse lm_sensors smartmontools hddtemp \
-zsh zsh-completions networkmanager nm-connection-editor \
+kubernetes-tools kubectl-plugins linux-tools git syncthing\
+neovim vim lm_sensors smartmontools hddtemp \
+zsh zsh-completions networkmanager \
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
-alacritty p7zip firefox nmap mdcat docker docker-buildx docker-compose bat \
-man-db man-pages texinfo obsidian tmux plocate lsd acpi fzf fd \
-discord gimp ttf-fira-code vlc i2c-tools upower bookworm cifs-utils \
-syncthing
+p7zip nmap mdcat docker docker-buildx docker-compose bat \
+man-db man-pages texinfo tmux plocate lsd acpi fzf fd \
+ttf-fira-code i2c-tools upower cifs-utils \
+gnome gnome-extra seahorse vlc bookworm discord gimp nm-connection-editor alacritty firefox obsidian
 ```
 
 #### Generate an fstab file
