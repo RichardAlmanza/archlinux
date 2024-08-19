@@ -222,7 +222,7 @@ pacman -Sy archlinux-keyring
 pacstrap /mnt base base-devel linux linux-firmware archlinux-keyring \
 kubernetes-tools kubectl-plugins linux-tools git syncthing\
 neovim vim lm_sensors smartmontools hddtemp \
-zsh zsh-completions networkmanager \
+zsh zsh-completions networkmanager terraform\
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 p7zip nmap mdcat docker docker-buildx docker-compose bat \
 man-db man-pages texinfo tmux plocate lsd acpi fzf fd \
@@ -515,7 +515,7 @@ dive slack-desktop cheat gnome-browser-connector brave
 ```bash
 pushd /tmp
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
+7z x awscliv2.zip
 sudo ./aws/install
 rm -rf aws
 popd
