@@ -68,6 +68,8 @@
       - [Manage Docker as a non-root user](#manage-docker-as-a-non-root-user)
     - [Nix](#nix)
       - [Configuration](#configuration)
+      - [Packages with nix](#packages-with-nix)
+        - [Flox](#flox)
     - [Config files](#config-files)
     - [Config Tmux](#config-tmux)
 
@@ -605,6 +607,47 @@ Then, Restart your session for the change to have an effect.
 ```bash
 sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 sudo nix-channel --update
+```
+
+#### Packages with nix
+
+##### Flox
+
+[Ref: Flox installation](https://flox.dev/docs/install-flox/#__tabbed_1_6)
+
+
+```bash
+echo -e "\nextra-trusted-substituters = https://cache.flox.dev" | sudo tee -a /etc/nix/nix.conf
+echo "extra-trusted-public-keys = flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs=" | sudo tee -a /etc/nix/nix.conf
+```
+
+```bash
+sudo systemctl stop nix-daemon.service
+sudo systemctl restart nix-daemon.socket
+```
+
+```bash
+nix profile install \
+      --experimental-features "nix-command flakes" \
+      --accept-flake-config \
+      'github:flox/flox'
+```
+
+```bash
+flox --version
+```
+
+```bash
+flox config --set-bool disable_metrics true
+```
+
+Upgrade flox
+
+```bash
+nix profile upgrade \
+    --experimental-features "nix-command flakes" \
+    --accept-flake-config \
+    '.*flox'
 ```
 
 ### Config files
