@@ -66,6 +66,8 @@
     - [Syncthing](#syncthing)
     - [Docker](#docker)
       - [Manage Docker as a non-root user](#manage-docker-as-a-non-root-user)
+    - [Nix](#nix)
+      - [Configuration](#configuration)
     - [Config files](#config-files)
     - [Config Tmux](#config-tmux)
 
@@ -226,7 +228,7 @@ zsh zsh-completions networkmanager terraform\
 networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 p7zip nmap mdcat docker docker-buildx docker-compose bat \
 man-db man-pages texinfo tmux plocate lsd acpi fzf fd \
-ttf-fira-code i2c-tools upower cifs-utils \
+ttf-fira-code i2c-tools upower cifs-utils nix\
 gnome gnome-extra seahorse vlc bookworm discord gimp nm-connection-editor alacritty firefox obsidian
 ```
 
@@ -584,6 +586,25 @@ systemctl --user enable syncthing.service
 ```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
+```
+
+### Nix
+
+[Ref: Archlinux Nix installation](https://wiki.archlinux.org/title/Nix#Installation/)
+
+#### Configuration
+
+```bash
+sudo systemctl enable nix-daemon.service
+sudo usermod -aG nix-users $USER
+```
+
+Then, Restart your session for the change to have an effect.
+
+
+```bash
+sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+sudo nix-channel --update
 ```
 
 ### Config files
