@@ -75,7 +75,7 @@ plugins=(
     colored-man-pages
     command-not-found
     web-search
-    # tmuxinator
+    tmux
     1password
     docker
     git

@@ -1,3 +1,8 @@
+[general]
+# shell = "<string>" | { program = "<string>", args = ["<string>",] }
+working_directory = "None"
+live_config_reload = true
+ipc_socket = true
 # Config guide https://alacritty.org/config-alacritty.html
 # man 5 alacritty
 
@@ -15,7 +20,3 @@ import = [
     "~/.config/alacritty/hints.toml",
     "~/.config/alacritty/keyboard.toml",
 ]
-# shell = "<string>" | { program = "<string>", args = ["<string>",] }
-working_directory = "None"
-live_config_reload = true
-ipc_socket = true
