@@ -86,7 +86,9 @@ plugins=(
 )
 
 export FZF_BASE='/usr/share/fzf'
+#export FZF_DEFAULT_COMMAND='plocate $PWD'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+export FZF_DEFAULT_OPTS='--walker-skip=.git,pfx/dosdevices,pfx/drive_c,default_pfx/dosdevices,default_pfx/drive_c'
 
 fpath=($ZSH_CUSTOM/completions $fpath)
 
