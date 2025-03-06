@@ -1,5 +1,17 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/bin:$HOME/.cargo/bin:/usr/local/go/bin:$HOME/go/bin:
+
+# export PATH=$PATH:$HOME/bin:$HOME/.cargo/bin:/usr/local/go/bin:$HOME/go/bin:
+
+# Add dirs paths to $PATH
+dir_paths=(
+  $HOME/.nix-profile/bin
+)
+
+for dir in "${dir_paths[@]}"
+do
+  # This avoids dir path duplication, but it duplicates if $dir is at the beginning of $PATH
+  [[ "${PATH#*:$dir}" == "$PATH" ]] && export PATH="$PATH:$dir"
+done
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/repositories/use/oh-my-zsh"
