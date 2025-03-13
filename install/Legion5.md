@@ -3,6 +3,8 @@
 - [Content](#content)
 - [Manjaro Install](#manjaro-install)
   - [Post Installation](#post-installation)
+    - [Load modules](#load-modules)
+      - [ideapad\_laptop module to manage battery conservation](#ideapad_laptop-module-to-manage-battery-conservation)
     - [Change Shell](#change-shell)
     - [Swapfile](#swapfile)
       - [Tuning \& Performance Considerations](#tuning--performance-considerations)
@@ -17,6 +19,19 @@
 # Manjaro Install
 
 ## Post Installation
+
+### Load modules
+
+#### ideapad_laptop module to manage battery conservation
+
+This is a pre-require for Gnome extension IdeaPad
+
+> Ref: [Github project](https://github.com/laurento/gnome-shell-extension-ideapad#additional-required-settings), [Gnome Extension](https://extensions.gnome.org/extension/2992/ideapad/)
+
+```bash
+echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC????\:??/conservation_mode" | sudo tee/etc/sudoers.d/20-ideapad
+echo "ideapad_laptop" | sudo tee /etc/modules-load.d/ideapad_laptop.conf
+```
 
 ### Change Shell
 
