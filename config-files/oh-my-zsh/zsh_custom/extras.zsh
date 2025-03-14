@@ -8,6 +8,9 @@ alias lt='lsd -ahl --tree'
 alias lta='lsd -Ahl --tree'
 alias llt='lsd -hl --tree'
 
+# go-task
+alias task='go-task'
+
 # [FUNCTIONS]
 
 function find-aliases() {

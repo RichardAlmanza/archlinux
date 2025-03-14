@@ -1,16 +1,16 @@
-#compdef task
-compdef _task task
+#compdef go-task
+compdef _go-task go-task
 typeset -A opt_args
 
 _GO_TASK_COMPLETION_LIST_OPTION="${GO_TASK_COMPLETION_LIST_OPTION:---list-all}"
 
 # Listing commands from Taskfile.yml
-function __task_list() {
+function __go-task_list() {
     local -a scripts cmd
     local -i enabled=0
     local taskfile item task desc
 
-    cmd=(task)
+    cmd=(go-task)
     taskfile=${(Qv)opt_args[(i)-t|--taskfile]}
     taskfile=${taskfile//\~/$HOME}
 
@@ -38,7 +38,7 @@ function __task_list() {
     _describe 'Task to run' scripts
 }
 
-_task() {
+_go-task() {
     _arguments \
         '(-C --concurrency)'{-C,--concurrency}'[limit number of concurrent tasks]: ' \
         '(-p --parallel)'{-p,--parallel}'[run command-line tasks in parallel]' \
@@ -61,11 +61,11 @@ _task() {
             {-i,--init}'[create new Taskfile.yml]' \
             '(-*)'{-h,--help}'[show help]' \
             '(-*)--version[show version and exit]' \
-            '*: :__task_list'
+            '*: :__go-task_list'
 }
 
 # don't run the completion function when being source-ed or eval-ed
-if [ "$funcstack[1]" = "_task" ]; then
-    _task "$@"
+if [ "$funcstack[1]" = "_go-task" ]; then
+    _go-task "$@"
 fi
 
