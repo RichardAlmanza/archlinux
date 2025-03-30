@@ -11,6 +11,9 @@ alias llt='lsd -hl --tree'
 # go-task
 alias task='go-task'
 
+# foliate
+alias foliate='WEBKIT_DISABLE_DMABUF_RENDERER=1 foliate' # there is bug with WebKitGTK https://github.com/johnfactotum/foliate/issues/1093
+
 # function aliases
 alias fa='find_aliases'
 alias chat-ollama='sh "$ZSH_CUSTOM/scripts/chat_ollama.sh"'

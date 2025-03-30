@@ -231,7 +231,7 @@ networkmanager-openvpn networkmanager-pptp htop tree nano neofetch \
 p7zip nmap mdcat docker docker-buildx docker-compose bat \
 man-db man-pages texinfo tmux plocate lsd acpi fzf fd \
 ttf-fira-code i2c-tools upower cifs-utils nix\
-gnome gnome-extra seahorse vlc bookworm discord gimp nm-connection-editor alacritty firefox obsidian
+gnome gnome-extra seahorse vlc foliate discord gimp nm-connection-editor alacritty firefox obsidian
 ```
 
 #### Generate an fstab file

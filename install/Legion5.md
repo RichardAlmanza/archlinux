@@ -126,7 +126,7 @@ sudo pacman -Sy archlinux-keyring
 ```bash
 sudo pacman -Sy base-devel neovim vim btop tree neofetch mdcat \
 docker docker-buildx docker-compose bat tmux plocate lsd \
-fzf fd ttf-fira-code nix vlc bookworm discord gimp inkscape \
+fzf fd ttf-fira-code nix vlc foliate discord gimp inkscape \
 alacritty steam syncthing yay obs-studio nvtop podman \
 nvidia-container-toolkit
 ```
