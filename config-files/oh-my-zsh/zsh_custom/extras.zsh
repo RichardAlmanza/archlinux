@@ -11,9 +11,13 @@ alias llt='lsd -hl --tree'
 # go-task
 alias task='go-task'
 
+# function aliases
+alias fa='find_aliases'
+alias chat-ollama='sh "$ZSH_CUSTOM/scripts/chat_ollama.sh"'
+
 # [FUNCTIONS]
 
-function find-aliases() {
+function find_aliases() {
     regx="($1"
     second_regx="([a-zA-Z]*$1[a-zA-Z]*"
     shift
@@ -28,10 +32,6 @@ function find-aliases() {
     second_regx="${second_regx})"
 
     alias | grep -i -E "$regx" | grep -i -E "$second_regx"
-}
-
-function fa() {
-    find-aliases "$@"
 }
 
 function blackbox() {
