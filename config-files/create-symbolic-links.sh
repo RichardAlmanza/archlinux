@@ -78,6 +78,9 @@ omz_config () {
     CLONE_PLUGINS=(
         "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting.git"
     )
+    
+    ehco "*** Create zsh custom directory if it doesn't exist ***"
+    mkdir -p $ZSH_CUSTOM
 
     echo "*** Cloning plugins for oh-my-zsh ***"
     clone_repos $REPO_ZSH_CUSTOM/plugins ${CLONE_PLUGINS[@]}
