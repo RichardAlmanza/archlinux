@@ -8,6 +8,9 @@ alias lt='lsd -ahl --tree'
 alias lta='lsd -Ahl --tree'
 alias llt='lsd -hl --tree'
 
+# yt-dlp Download videos or audio
+alias yt-mp3='yt-dlp -t mp3'
+
 # go-task
 alias task='go-task'
 

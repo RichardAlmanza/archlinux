@@ -104,7 +104,7 @@ export FZF_DEFAULT_OPTS='--walker-skip=.git,pfx/dosdevices,pfx/drive_c,default_p
 
 fpath=($ZSH_CUSTOM/completions $fpath)
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 source $ZSH/oh-my-zsh.sh
 
