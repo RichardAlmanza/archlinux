@@ -5,6 +5,7 @@
 # Add dirs paths to $PATH
 dir_paths=(
   $HOME/.nix-profile/bin
+  $HOME/.local/bin
 )
 
 for dir in "${dir_paths[@]}"
@@ -136,6 +137,9 @@ fi
 
 
 # Some completions
+# REF: https://wiki.postmarketos.org/wiki/Pmbootstrap/Tab_Completion#Zsh
+eval "$(register-python-argcomplete pmbootstrap)"
+
 # This depend on oh-my-zsh
 complete -C aws_completer aws
 
