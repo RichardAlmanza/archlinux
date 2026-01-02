@@ -158,9 +158,13 @@ android-tools scrcpy pmbootstrap python-argcomplete ncurses dtc
 
 Aur packages
 
+> [!NOTE]
+> `epson-inkjet-printer-201207w` includes the epson driver for L555, [REF](https://www.openprinting.org/printer/Epson/Epson-L555_Series)
+
 ```bash
 yay -Sy visual-studio-code-bin 1password 1password-cli ttf-mononoki \
-ttf-ms-fonts dive cheat brave-bin anydesk-bin calibre-bin
+ttf-ms-fonts dive cheat brave-bin anydesk-bin calibre-bin \
+epson-inkjet-printer-201207w
 ```
 
 Update and upgrade system
