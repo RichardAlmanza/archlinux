@@ -156,6 +156,12 @@ Android and PostmarketOS set
 android-tools scrcpy pmbootstrap python-argcomplete ncurses dtc
 ```
 
+Kicad packages
+
+```bash
+kicad --asdeps kicad-library kicad-library-3d
+```
+
 Aur packages
 
 > [!NOTE]
