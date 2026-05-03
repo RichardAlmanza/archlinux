@@ -147,19 +147,41 @@ zsh-completions htop btop tree p7zip nmap mdcat podman podman-compose \
 bat tmux alacritty steam obs-studio nvtop nvidia-container-toolkit \
 lsd acpi fzf fd ttf-fira-code i2c-tools nix seahorse mpv vlc foliate \
 discord gimp inkscape zettlr baobab gnome-browser-connector nethogs \
-fastfetch libreoffice-still yt-dlp
+fastfetch libreoffice-still yt-dlp qbittorrent && \
+sudo pacman -S --asdeps vlc-plugin-x264 vlc-plugin-x265 vlc-plugin-ffmpeg
 ```
 
 Android and PostmarketOS set
 
 ```bash
-android-tools scrcpy pmbootstrap python-argcomplete ncurses dtc
+sudo pacman -Sy android-tools scrcpy pmbootstrap python-argcomplete ncurses dtc
 ```
 
 Kicad packages
 
 ```bash
-kicad --asdeps kicad-library kicad-library-3d
+sudo pacman -Sy kicad && \
+sudo pacman -S --asdeps kicad-library kicad-library-3d
+```
+
+Octave and GeoGebra
+
+```bash
+sudo pacman -Sy octave geogebra && \
+sudo pacman -S --asdeps gnuplot
+```
+
+EasyEffects (global noise cancellation and more effects)
+
+
+REF: [deepfilternet installation for *Deep Noise Remover* Plugin](https://adamgradzki.com/adding-deepfilternet-noise-reduction-to-easy-effects-on-arch-linux.html)
+
+```bash
+sudo pacman -Sy easyeffects && \
+sudo pacman -S --asdeps calf lsp-plugins-lv2 zam-plugins-lv2 mda.lv2 yelp && \
+curl -LO https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/libdeep_filter_ladspa-0.5.6-x86_64-unknown-linux-gnu.so && \
+sudo mkdir -p /usr/lib64/ladspa/ && \
+sudo mv libdeep_filter_ladspa-0.5.6-x86_64-unknown-linux-gnu.so /usr/lib64/ladspa/libdeep_filter_ladspa.so
 ```
 
 Aur packages
