@@ -8,7 +8,7 @@ WORKING_DIR=$(dirname "$WORKING_FILE")
 . "$WORKING_DIR"/utils/container_management.sh
 
 container_open_webui() {
-    # First param is fot the port to use OpenWeb UI
+    # First param is for the port to use OpenWeb UI
     WEB_UI_PORT="${1:-3535}"
     WEB_UI_CONTAINER_NAME="open-webui"
     OLLAMA_PORT=11434

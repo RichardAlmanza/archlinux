@@ -8,10 +8,10 @@ WORKING_DIR=$(dirname "$WORKING_FILE")
 . "$WORKING_DIR"/utils/container_management.sh
 
 container_llama_cpp() {
-    # First param is fot the port to use OpenWeb UI
-    LLAMA_CPP_PORT="${1:-11435}"
+    # First param is to setup the model context-window
+    CONTEXT_SIZE="${1:-32000}" 
     LLAMA_MODEL="${2:-Qwen3.5-9B-DeepSeek-V4-Flash-Q4_K_M.gguf}"
-    CONTEXT_SIZE="${3:-32000}" 
+    LLAMA_CPP_PORT="${3:-11435}"
 
     LLAMA_CONTAINER_NAME="llama-cpp"
     
