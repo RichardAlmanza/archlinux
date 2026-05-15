@@ -22,7 +22,7 @@ alias fa='find_aliases'
 alias chat-ollama='sh "$ZSH_CUSTOM/scripts/chat_ollama.sh"'
 alias webui='sh "$ZSH_CUSTOM/scripts/open_webui.sh"'
 alias llamacpp='sh "$ZSH_CUSTOM/scripts/llama_cpp.sh"'
-alias zeditor='echo "using alias wrapper; ZED_OPEN_AI_COMPATIBLE_EDIT_PREDICTION_API_KEY=elpepe LLAMA_CPP_API_KEY=elpepe zeditor"'
+alias zeditor='echo "using alias wrapper"; ZED_OPEN_AI_COMPATIBLE_EDIT_PREDICTION_API_KEY=elpepe LLAMA_CPP_API_KEY=elpepe zeditor'
 
 # [FUNCTIONS]
 

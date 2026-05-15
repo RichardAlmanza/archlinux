@@ -14,14 +14,17 @@ container_llama_cpp() {
     LLAMA_CPP_PORT="${3:-11435}"
 
     LLAMA_CONTAINER_NAME="llama-cpp"
-    
+
+    # vulkan image is compatible in general, but using cuda seems to improve
+    # performance about 10-13% relatively with vulkan on nvidia gpus
+    # ghcr.io/ggml-org/llama.cpp:full-vulkan 
     flipflop_container any \
         "$LLAMA_CONTAINER_NAME" \
         "-p ${LLAMA_CPP_PORT}:8080 \
             -v ai-models:/models/ \
             --gpus all \
             --replace \
-            ghcr.io/ggml-org/llama.cpp:full-vulkan \
+            ghcr.io/ggml-org/llama.cpp:full-cuda \
             --server \
             --model /models/${LLAMA_MODEL} \
             --host 0.0.0.0 \
