@@ -9,7 +9,15 @@ alias lta='lsd -Ahl --tree'
 alias llt='lsd -hl --tree'
 
 # yt-dlp Download videos or audio
-alias yt-mp3='yt-dlp -t mp3'
+alias yt-update-music='pushd ~/Music && \
+  yt-dlp \
+  --cookies music.youtube.com_cookies.txt \
+  --extract-audio --audio-format m4a \
+  --embed-metadata --embed-thumbnail -o "%(artist)s - %(title)s.%(ext)s" \
+  --download-archive downloaded.txt \
+  --no-overwrites \
+  https://music.youtube.com/playlist\?list\=PL_QR9p1q7HsWX1-lZMZfKZBV50evVvXIQ && \
+  popd'
 
 # go-task
 alias task='go-task'
